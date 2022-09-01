@@ -38,7 +38,7 @@ As you may be aware, our dataset and that of [1, 2] are all generated from the v
 If this dataset is useful for your research, please cite our work
 
 ```
-@ARTICLE{9874720,
+@ARTICLE{Mai2022,
   author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
   journal={IEEE Transactions on Image Processing}, 
   title={Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging}, 
@@ -62,6 +62,7 @@ and the respective authors of the original HDR video datasets
 }
 % HDRv
 @article{Kronander2014,
+	author = {J. Kronander and S. Gustavson and G. Bonnet and A. Ynnerman and J. Unger},
 	title = {A unified framework for multi-sensor {HDR} video reconstruction},
 	journal = {Signal Processing: Image Communication},
 	volume = {29},
@@ -69,6 +70,5 @@ and the respective authors of the original HDR video datasets
 	pages = {203-215},
 	year = {2014},
 	month = {Feb.},
-	author = {J. Kronander and S. Gustavson and G. Bonnet and A. Ynnerman and J. Unger},
 }
 ```
