@@ -5,6 +5,8 @@ Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee
 IEEE Transactions on Image Processing, 2022  
 https://dx.doi.org/10.1109/TIP.2022.3201708
 
+If you have any question, please open an issue.
+
 # Source code
 The proposed algorithm is implemented in Python with PyTorch framework.  
 The source code will be updated soon. In the meantime, you may download the datasets and results.
@@ -13,7 +15,7 @@ The source code will be updated soon. In the meantime, you may download the data
 ## Download
 Please visit the link below
 
-https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EmgWtrTX6nNMmNmWaZHX0EQBEcPAg2wvZJluOsneVNdOfg
+[Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EmgWtrTX6nNMmNmWaZHX0EQBEcPAg2wvZJluOsneVNdOfg)
 
 The folder contains two ZIP files
 - Datasets.zip: This file contains 187 and 32 multi-exposure image sets generated from the HDM-HDR and HDRv datasets, respectively, as described in the paper.
