@@ -7,20 +7,22 @@ https://dx.doi.org/10.1109/TIP.2022.3201708
 
 # Source code
 The proposed algorithm is implemented in Python with PyTorch framework.  
-The implementation will be updated soon. In the meantime, you may download the datasets and results.
+The source code will be updated soon. In the meantime, you may download the datasets and results.
 
 # Dataset
 ## Download
 Please visit the link below
+
+https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EmgWtrTX6nNMmNmWaZHX0EQBEcPAg2wvZJluOsneVNdOfg
 
 The folder contains two ZIP files
 - Datasets.zip: This file contains 187 and 32 multi-exposure image sets generated from the HDM-HDR and HDRv datasets, respectively, as described in the paper.
 - All_Synthesized_Results.zip: We also provide HDR images synthesized by the proposed algorithm and all other competing algorithms, so that you can inspect the results to your heart's content without rerunning 10 algorithms.
 
 ## Difference between our dataset and that of NTIRE challenges on HDR imaging [1, 2]
-As you may be aware, our dataset and that of [1, 2] are all generated from the HDM-HDR dataset [3]. However, the data formats of the generated LDR and HDR images are different. Our dataset has the same format as the Kalantari and Ramamoorthi's dataset [4], that means it is fully compatible with existing HDR algorithms that are designed for Kalantari and Ramamoorthi's dataset [4]. We also generate an additional test set from HDRv [5] with the same format.
+As you may be aware, our dataset and that of [1, 2] are all generated from the videos of HDM-HDR dataset [3]. However, the data formats of the generated LDR and HDR images are different. Our dataset has the same format as the Kalantari and Ramamoorthi's dataset [4], that means it is fully compatible with existing HDR algorithms that are designed for Kalantari and Ramamoorthi's dataset [4]. We also generate an additional test set from HDRv [5] with the same format.
 
-References
+**References**
 
 [1] E. Pérez-Pellitero, S. Catley-Chandar, R. Shaw, A. Leonardis, R. Timofte *et al.*, “NTIRE 2022 challenge on high dynamic range imaging: Methods and results,” in *Proc. IEEE Conf. Comput. Vis. Pattern Recognit. Workshops*, Jun. 2022, pp. 1009–1023.
 
@@ -33,4 +35,40 @@ References
 [5] J. Kronander, S. Gustavson, G. Bonnet, A. Ynnerman, and J. Unger, “A unified framework for multi-sensor HDR video reconstruction,” *Signal Process. Image Commun.*, vol. 29, no. 2, pp. 203–215, Feb. 2014.
 
 ## Citation
-If this dataset is useful for your research, please cite
+If this dataset is useful for your research, please cite our work
+
+```
+@ARTICLE{9874720,
+  author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
+  journal={IEEE Transactions on Image Processing}, 
+  title={Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1-1},
+  doi={10.1109/TIP.2022.3201708}}
+```
+and the respective authors of the original HDR video datasets
+```
+% HDM-HDR
+@inproceedings{Froehlich2014,
+	author = {J. Froehlich and S. Grandinetti and B. Eberhardt and S. Walter and A. Schilling and H. Brendel},
+	title = {{Creating cinematic wide gamut HDR-video for the evaluation of tone mapping operators and HDR-displays}},
+	volume = {9023},
+	booktitle = {Proceedings of SPIE},
+	pages = {279-288},
+	year = {2014},
+	month={Mar.},
+}
+% HDRv
+@article{Kronander2014,
+	title = {A unified framework for multi-sensor {HDR} video reconstruction},
+	journal = {Signal Processing: Image Communication},
+	volume = {29},
+	number = {2},
+	pages = {203-215},
+	year = {2014},
+	month = {Feb.},
+	author = {J. Kronander and S. Gustavson and G. Bonnet and A. Ynnerman and J. Unger},
+}
+```
