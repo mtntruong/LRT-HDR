@@ -89,6 +89,8 @@ class RPCA_Block(nn.Module):
         E_k = torch.mul(torch.sign(Psi_E), nn.functional.relu(torch.abs(Psi_E) - self.lamb / psi_e))
 
         # update S
+        # S is T in the paper
+        # Mysterious errors might happen, so I leave it be
         Y = Omega - X_k - E_k + L1 / self.mu
         S_k = torch.mul(Y, torch.tensor(1.).cuda() - Omega) + \
             torch.mul(Y, Omega) * torch.min(torch.tensor(1.).cuda(), self.delta / (torch.norm(torch.mul(Y, Omega), 'fro') + 1e-6))
