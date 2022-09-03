@@ -9,7 +9,7 @@ If you have any question, please open an issue.
 
 # Source code
 The proposed algorithm is implemented in Python with PyTorch framework.  
-The source code will be updated soon. In the meantime, you may download the datasets and results.
+The full source code with training and testing routines will be updated soon. In the meantime, you may take a look at the implementation of the main network, or download the datasets and results.
 
 # Dataset
 ## Download
