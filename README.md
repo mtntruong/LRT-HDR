@@ -40,37 +40,38 @@ As you may be aware, our dataset and that of [1, 2] are all generated from the v
 If this dataset is useful for your research, please cite our work
 
 ```
-@ARTICLE{Mai2022,
-  author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
-  journal={IEEE Transactions on Image Processing}, 
-  title={Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging}, 
-  year={2022},
-  volume={},
-  number={},
-  pages={1-1},
-  doi={10.1109/TIP.2022.3201708}}
+@article{Mai2022,
+    author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
+    journal={IEEE Transactions on Image Processing}, 
+    title={Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging}, 
+    year={2022},
+    volume={},
+    number={},
+    pages={1-1},
+    doi={10.1109/TIP.2022.3201708}
+}
 ```
 and the respective authors of the original HDR video datasets
 ```
 % HDM-HDR
 @inproceedings{Froehlich2014,
-	author = {J. Froehlich and S. Grandinetti and B. Eberhardt and S. Walter and A. Schilling and H. Brendel},
-	title = {{Creating cinematic wide gamut HDR-video for the evaluation of tone mapping operators and HDR-displays}},
-	volume = {9023},
-	booktitle = {Proceedings of SPIE},
-	pages = {279-288},
-	year = {2014},
-	month={Mar.},
+    author = {J. Froehlich and S. Grandinetti and B. Eberhardt and S. Walter and A. Schilling and H. Brendel},
+    title = {{Creating cinematic wide gamut HDR-video for the evaluation of tone mapping operators and HDR-displays}},
+    volume = {9023},
+    booktitle = {Proceedings of SPIE},
+    pages = {279-288},
+    year = {2014},
+    month = {Mar.},
 }
 % HDRv
 @article{Kronander2014,
-	author = {J. Kronander and S. Gustavson and G. Bonnet and A. Ynnerman and J. Unger},
-	title = {A unified framework for multi-sensor {HDR} video reconstruction},
-	journal = {Signal Processing: Image Communication},
-	volume = {29},
-	number = {2},
-	pages = {203-215},
-	year = {2014},
-	month = {Feb.},
+    author = {J. Kronander and S. Gustavson and G. Bonnet and A. Ynnerman and J. Unger},
+    title = {A unified framework for multi-sensor {HDR} video reconstruction},
+    journal = {Signal Processing: Image Communication},
+    volume = {29},
+    number = {2},
+    pages = {203-215},
+    year = {2014},
+    month = {Feb.},
 }
 ```
