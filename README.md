@@ -45,9 +45,9 @@ If this dataset is useful for your research, please cite our work
     journal={IEEE Transactions on Image Processing}, 
     title={Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging}, 
     year={2022},
-    volume={},
+    volume={31},
     number={},
-    pages={1-1},
+    pages={5774-5787},
     doi={10.1109/TIP.2022.3201708}
 }
 ```
