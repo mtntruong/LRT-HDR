@@ -2,7 +2,7 @@
 Source code and data for our paper:  
 Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging  
 Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee  
-IEEE Transactions on Image Processing, 2022  
+IEEE Transactions on Image Processing, vol. 31, pp. 5774-5787, 2022  
 https://dx.doi.org/10.1109/TIP.2022.3201708
 
 If you have any question, please open an issue.
