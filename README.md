@@ -24,6 +24,11 @@ Please use `env.yml` to create an environment in [Anaconda](https://www.anaconda
 ```
 conda env create -f env.yml
 ```
+Then activate the environment
+```
+conda activate torch11
+```
+If you want to change the environment name, edit the first line of `env.yml` then create the environment.
 
 ## Training
 TODO
