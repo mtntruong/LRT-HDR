@@ -44,7 +44,7 @@ def train(opt):
 
     torch.backends.cudnn.benchmark = True
 
-    train_path = '../Train_Pairs_X_tensor'
+    train_path = './Training_Samples'
     data_train = DatasetDirectory(train_path)
     data_train_loader = torch.utils.data.DataLoader(data_train, batch_size=1, shuffle=True, num_workers=4)
 

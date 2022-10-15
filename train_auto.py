@@ -44,13 +44,14 @@ def train(opt):
 
     torch.backends.cudnn.benchmark = True
 
-    train_path = './Training_Samples_ICIP'
+    train_path = './Training_Samples'
     data_train = DatasetDirectory(train_path)
     data_train_loader = torch.utils.data.DataLoader(data_train, batch_size=1, shuffle=True, num_workers=4)
 
     model = RPCA_Net(N_iter=10)
     model.cuda()
-    optimizer = torch.optim.Adam(model.parameters(), lr=3e-5)
+    step_lr = 3e-5
+    optimizer = torch.optim.Adam(model.parameters(), lr=step_lr)
     loss = torch.nn.L1Loss()
 
     if opt.resume is not None:
@@ -75,21 +76,16 @@ def train(opt):
         print('WARNING: save_path already exists. Checkpoints may be overwritten.')
 
     avg_loss = 0
-    for epoch in tqdm(range(epoch_0, 10_001), desc='Training'):
+    for epoch in tqdm(range(epoch_0, 41), desc='Training'):
         for i, (ldr_in, omega, hdr_target) in enumerate(tqdm(data_train_loader, desc=f'Epoch {epoch}')):
 
             ldr_in = ldr_in.cuda()
             hdr_target = hdr_target.cuda()
             omega = omega.cuda()
 
-            R_prediction = model(ldr_in[:, :, :3], omega[:, :, :3])
-            G_prediction = model(ldr_in[:, :, 3:6], omega[:, :, 3:6])
-            B_prediction = model(ldr_in[:, :, 6:], omega[:, :, 6:])
-            hdr_prediction = torch.cat([torch.unsqueeze(R_prediction, 1),
-                                        torch.unsqueeze(G_prediction, 1),
-                                        torch.unsqueeze(B_prediction, 1)], dim=1)
+            X_hat, X_hdr = model(ldr_in, omega)
+            total_loss = loss(X_hat, hdr_target) + loss(X_hdr, hdr_target[0, :, 1, :])
 
-            total_loss = loss(torch.unsqueeze(hdr_prediction, 0), hdr_target)
             optimizer.zero_grad()
             total_loss.backward()
             optimizer.step()
@@ -109,6 +105,13 @@ def train(opt):
                  'optimizer_state_dict': optimizer.state_dict()},
                 os.path.join(opt.save_path, f'epoch_{epoch}.pth')
             )
+
+        if (epoch % 10) == 0:
+            if epoch == 10:
+                step_lr = step_lr / 30
+            else:
+                step_lr = step_lr / 10
+            for groups in optimizer.param_groups: groups['lr'] = step_lr
 
 
 if __name__ == '__main__':

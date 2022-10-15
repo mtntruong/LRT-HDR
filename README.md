@@ -37,9 +37,26 @@ conda activate torch11
 If you want to change the environment name, edit the first line of `env.yml` then create the environment.
 
 ## Training
-TODO
+First, you need to edit the path to training samples at line 47 of either `train_auto.py` or `train_manual.py`. Then run
+```
+python train_auto.py
+# or
+python train_manual.py
+```
+Using `train_auto.py` usually yields worst performance (still better than competing algorithms), but the learning rate will be automatically adjusted. Using `train_manual.py` provides best results but you have to manually adjust learning rate. When using `train_manual.py`, please cancel the script every 10 epochs to change the learning rate as follows
+```
+# After 10th epoch
+python train_manual.py --resume=./checkpoints/epoch_10.pth --set_lr=1e-6
+# After 20th epoch
+python train_manual.py --resume=./checkpoints/epoch_20.pth --set_lr=1e-7
+# After 30th epoch
+python train_manual.py --resume=./checkpoints/epoch_30.pth --set_lr=1e-8
+```
+I have tried several techniques involving `torch.optim.lr_scheduler` but manually adjusting learning rate is always better.
 
 ## Testing
+If you do not have time to retrain, you may download pretrained weights from the following link
+[Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)
 TODO
 
 # Dataset
