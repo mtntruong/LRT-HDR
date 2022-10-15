@@ -5,10 +5,10 @@ Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee
 IEEE Transactions on Image Processing, vol. 31, pp. 5774-5787, 2022  
 https://doi.org/10.1109/TIP.2022.3201708
 
-We also provide source code for the conference version for References
-Ghost-Free HDR Imaging Via Unrolling Low-Rank Matrix Completion
-Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee
-2021 IEEE International Conference on Image Processing (ICIP)
+We also provide source code for the matrix completion version published in ICIP for references  
+Ghost-Free HDR Imaging Via Unrolling Low-Rank Matrix Completion  
+Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee  
+2021 IEEE International Conference on Image Processing (ICIP)  
 https://doi.org/10.1109/ICIP42928.2021.9506201
 
 If you have any question, please open an issue.
