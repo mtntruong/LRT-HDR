@@ -37,7 +37,7 @@ conda activate torch11
 If you want to change the environment name, edit the first line of `env.yml` then create the environment.
 
 ## Training
-First, you need to edit the path to training samples at line 47 of either `train_auto.py` or `train_manual.py`. Then run
+First, you need to edit the path to training samples at line 47 of either `train_auto.py` or `train_manual.py` if you place the data somewhere else. Then run
 ```
 python train_auto.py
 # or
@@ -52,11 +52,10 @@ python train_manual.py --resume=./checkpoints/epoch_20.pth --set_lr=1e-7
 # After 30th epoch
 python train_manual.py --resume=./checkpoints/epoch_30.pth --set_lr=1e-8
 ```
-I have tried several techniques involving `torch.optim.lr_scheduler` but manually adjusting learning rate is always better.
+I have tried several ways involving `torch.optim.lr_scheduler` but manually adjusting learning rate is always better.
 
 ## Testing
-If you do not have time to retrain, you may download pretrained weights from the following link
-[Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)
+If you do not have time to retrain, you may download pretrained weights from [this link](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)  
 TODO
 
 # Dataset
@@ -96,7 +95,7 @@ If our research and data are useful for your research, please kindly cite our wo
     doi={10.1109/TIP.2022.3201708}
 }
 ```
-or ICIP version for low-rank matrix completion
+or if you prefer the low-rank matrix completion algorithm
 ```
 @inproceedings{Mai2021,
     author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
