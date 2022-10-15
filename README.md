@@ -3,7 +3,13 @@ Source code and data for our paper:
 Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging  
 Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee  
 IEEE Transactions on Image Processing, vol. 31, pp. 5774-5787, 2022  
-https://dx.doi.org/10.1109/TIP.2022.3201708
+https://doi.org/10.1109/TIP.2022.3201708
+
+We also provide source code for the conference version for References
+Ghost-Free HDR Imaging Via Unrolling Low-Rank Matrix Completion
+Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee
+2021 IEEE International Conference on Image Processing (ICIP)
+https://doi.org/10.1109/ICIP42928.2021.9506201
 
 If you have any question, please open an issue.
 
@@ -59,9 +65,8 @@ As you may be aware, our dataset and that of [1, 2] are all generated from the v
 
 [5] J. Kronander, S. Gustavson, G. Bonnet, A. Ynnerman, and J. Unger, “A unified framework for multi-sensor HDR video reconstruction,” *Signal Process. Image Commun.*, vol. 29, no. 2, pp. 203–215, Feb. 2014.
 
-## Citation
-If this dataset is useful for your research, please cite our work
-
+# Citation
+If our research and data are useful for your research, please kindly cite our work
 ```
 @article{Mai2022,
     author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
@@ -74,7 +79,20 @@ If this dataset is useful for your research, please cite our work
     doi={10.1109/TIP.2022.3201708}
 }
 ```
-and the respective authors of the original HDR video datasets
+or ICIP version for low-rank matrix completion
+```
+@inproceedings{Mai2021,
+    author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
+    booktitle={2021 IEEE International Conference on Image Processing (ICIP)},
+    title={Ghost-Free HDR Imaging Via Unrolling Low-Rank Matrix Completion},
+    year={2021},
+    volume={},
+    number={},
+    pages={2928-2932},
+    doi={10.1109/ICIP42928.2021.9506201}
+}
+```
+Citing the respective authors of the original HDR video datasets is appreciated
 ```
 % HDM-HDR
 @inproceedings{Froehlich2014,
