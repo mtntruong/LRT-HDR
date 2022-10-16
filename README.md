@@ -1,5 +1,5 @@
 # LRT-HDR
-Source code and data for our paper:  
+Source code and data for the paper  
 Deep Unrolled Low-Rank Tensor Completion for High Dynamic Range Imaging  
 Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee  
 IEEE Transactions on Image Processing, vol. 31, pp. 5774-5787, 2022  
@@ -15,13 +15,14 @@ If you have any question, please open an issue.
 
 # Source code
 The proposed algorithm is implemented in Python with PyTorch framework.  
-The instructions for training and testing routines will be updated soon (they are bad codes, now I'm trying to make them easier to use). In the meantime, you may take a look at the implementation of the main network, or download the datasets and results.
+The instructions for testing routine will be updated soon (they are bad codes, now I'm trying to make them cleaner and easier to use). In the meantime, you may take a look at the implementation of the main network, or download the datasets and results.
 ## Preparation
 ### Download training/testing samples
 [Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/Eo87pbMBtLZHt03HZmJ0yIwB_VJ6X5ruXOKSNBgS-0tw-A)
 
-The folder contains three ZIP files
-- Training_Samples.zip: 13000 training samples 
+The folder contains four ZIP files:
+- Training_Samples.zip: 13000 training samples
+- Training_Samples_ICIP.zip: 13000 training samples used in the ICIP paper
 - HDM-HDR_Test_Samples.zip: Warped exposures of the HDM-HDR dataset
 - HDRv_Test_Samples.zip: Warped exposures of the HDRv dataset
 
@@ -37,13 +38,13 @@ conda activate torch11
 If you want to change the environment name, edit the first line of `env.yml` then create the environment.
 
 ## Training
-First, you need to edit the path to training samples at line 47 of either `train_auto.py` or `train_manual.py` if you place the data somewhere else. Then run
+Unzip `Training_Samples.zip` to obtain the folder of training samples, then edit line 47 in either `train_auto.py` or `train_manual.py` to update the path. The training process can be started by executing
 ```
 python train_auto.py
 # or
 python train_manual.py
 ```
-Using `train_auto.py` usually yields worst performance (still better than competing algorithms), but the learning rate will be automatically adjusted. Using `train_manual.py` provides best results but you have to manually adjust learning rate. When using `train_manual.py`, please cancel the script every 10 epochs to change the learning rate as follows
+While `train_auto.py` adjusts learning rate automatically, it usually yields worse performance (still better than competing algorithms). Using `train_manual.py` provides best results but you have to manually adjust learning rate. When using `train_manual.py`, please cancel the script every 10 epochs then rerun it to change the learning rate using the following commands
 ```
 # After 10th epoch
 python train_manual.py --resume=./checkpoints/epoch_10.pth --set_lr=1e-6
@@ -52,34 +53,22 @@ python train_manual.py --resume=./checkpoints/epoch_20.pth --set_lr=1e-7
 # After 30th epoch
 python train_manual.py --resume=./checkpoints/epoch_30.pth --set_lr=1e-8
 ```
-I have tried several ways involving `torch.optim.lr_scheduler` but manually adjusting learning rate is always better.
+I have tried several ways to update learning rate during training, including `torch.optim.lr_scheduler`, but manually adjusting learning rate is always better.
 
 ## Testing
-If you do not have time to retrain, you may download pretrained weights from [this link](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)  
+If you do not have time to retrain the network, you may download pretrained weights from [this link](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)  
 TODO
 
-# Dataset
+# HDR Dataset and results
 ## Download
 [Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EmgWtrTX6nNMmNmWaZHX0EQBEcPAg2wvZJluOsneVNdOfg)
 
-The folder contains two ZIP files
+The folder contains two ZIP files:
 - Datasets.zip: This file contains 187 and 32 multi-exposure image sets generated from the HDM-HDR and HDRv datasets, respectively, as described in the paper.
 - All_Synthesized_Results.zip: We also provide HDR images synthesized by the proposed algorithm and all other competing algorithms, so that you can inspect the results to your heart's content without rerunning 10 algorithms.
 
-## Difference between our dataset and that of NTIRE challenges on HDR imaging [1, 2]
-As you may be aware, our dataset and that of [1, 2] are all generated from the videos of HDM-HDR dataset [3]. However, the data formats of the generated LDR and HDR images are different. Our dataset has the same format as the Kalantari and Ramamoorthi's dataset [4], that means it is fully compatible with existing HDR algorithms that are designed for Kalantari and Ramamoorthi's dataset [4]. We also generate an additional test set from HDRv [5] with the same format.
-
-**References**
-
-[1] E. Pérez-Pellitero, S. Catley-Chandar, R. Shaw, A. Leonardis, R. Timofte *et al.*, “NTIRE 2022 challenge on high dynamic range imaging: Methods and results,” in *Proc. IEEE Conf. Comput. Vis. Pattern Recognit. Workshops*, Jun. 2022, pp. 1009–1023.
-
-[2] E. Pérez-Pellitero, S. Catley-Chandar, A. Leonardis, R. Timofte *et al.*, “NTIRE 2021 challenge on high dynamic range imaging: Dataset, methods and results,” in *Proc. IEEE Conf. Comput. Vis. Pattern Recognit. Workshops*, Jun. 2021, pp. 691-700.
-
-[3] J. Froehlich, S. Grandinetti, B. Eberhardt, S. Walter, A. Schilling, and H. Brendel, “Creating cinematic wide gamut HDR-video for the evaluation of tone mapping operators and HDR-displays,” in *Proc. SPIE*, vol. 9023, Mar. 2014, pp. 279–288.
-
-[4] N. K. Kalantari and R. Ramamoorthi, “Deep high dynamic range imaging of dynamic scenes,” *ACM Trans. Graph.*, vol. 36, no. 4, pp.144:1–144:12, Jul. 2017.
-
-[5] J. Kronander, S. Gustavson, G. Bonnet, A. Ynnerman, and J. Unger, “A unified framework for multi-sensor HDR video reconstruction,” *Signal Process. Image Commun.*, vol. 29, no. 2, pp. 203–215, Feb. 2014.
+## Difference between our dataset and that of NTIRE challenge on HDR imaging
+As you may be aware, our dataset and that of [NTIRE challenge](https://doi.org/10.1109/CVPRW53098.2021.00078) are all generated from the videos of [HDM-HDR dataset](https://doi.org/10.1117/12.2040003). However, the data formats of the generated LDR and HDR images are different. Our dataset has the same format as the [Kalantari and Ramamoorthi's dataset](https://doi.org/10.1145/3072959.3073609), that means it is fully compatible with existing HDR algorithms that are designed for Kalantari and Ramamoorthi's dataset. We also generate an additional test set from [HDRv](https://doi.org/10.1016/j.image.2013.08.018) with the same format.
 
 # Citation
 If our research and data are useful for your research, please kindly cite our work
@@ -108,27 +97,4 @@ or if you prefer the low-rank matrix completion algorithm
     doi={10.1109/ICIP42928.2021.9506201}
 }
 ```
-Citing the respective authors of the original HDR video datasets is appreciated
-```
-% HDM-HDR
-@inproceedings{Froehlich2014,
-    author = {J. Froehlich and S. Grandinetti and B. Eberhardt and S. Walter and A. Schilling and H. Brendel},
-    title = {{Creating cinematic wide gamut HDR-video for the evaluation of tone mapping operators and HDR-displays}},
-    volume = {9023},
-    booktitle = {Proceedings of SPIE},
-    pages = {279-288},
-    year = {2014},
-    month = {Mar.},
-}
-% HDRv
-@article{Kronander2014,
-    author = {J. Kronander and S. Gustavson and G. Bonnet and A. Ynnerman and J. Unger},
-    title = {A unified framework for multi-sensor {HDR} video reconstruction},
-    journal = {Signal Processing: Image Communication},
-    volume = {29},
-    number = {2},
-    pages = {203-215},
-    year = {2014},
-    month = {Feb.},
-}
-```
+Also, citing the respective authors of the original [HDM-HDR](https://doi.org/10.1117/12.2040003) and [HDRv](https://doi.org/10.1016/j.image.2013.08.018) video datasets is appreciated.
