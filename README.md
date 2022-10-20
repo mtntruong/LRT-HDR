@@ -26,6 +26,14 @@ The folder contains four ZIP files:
 - HDM-HDR_Test_Samples.zip: Warped exposures of the HDM-HDR dataset
 - HDRv_Test_Samples.zip: Warped exposures of the HDRv dataset
 
+### Download pretrained weights
+If you do not have time to retrain the network, you may use pretrained weights  
+[Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)
+
+The folder contains two PTH files:
+- LRT-HDR_net.pth: pretrained weight of LRT-HDR
+- ICIP_net.pth: pretrained weight of the matrix completion network (ICIP paper)
+
 ### Required Python packages
 Please use `env.yml` to create an environment in [Anaconda](https://www.anaconda.com/products/distribution)
 ```
@@ -33,30 +41,32 @@ conda env create -f env.yml
 ```
 Then activate the environment
 ```
-conda activate torch11
+conda activate lrt
 ```
-If you want to change the environment name, edit the first line of `env.yml` then create the environment.
+If you want to change the environment name, edit the first line of `env.yml` before creating the environment.
 
 ## Training
-Unzip `Training_Samples.zip` to obtain the folder of training samples, then edit line 47 in either `train_auto.py` or `train_manual.py` to update the path. The training process can be started by executing
+Extract `Training_Samples.zip` to obtain the folder `Training_Samples`, then training process can be started by executing
 ```
-python train_auto.py
+python train_auto.py --data_path=/path/to/Training_Samples
 # or
-python train_manual.py
+python train_manual.py --data_path=/path/to/Training_Samples
 ```
-While `train_auto.py` adjusts learning rate automatically, it usually yields worse performance (still better than competing algorithms). Using `train_manual.py` provides best results but you have to manually adjust learning rate. When using `train_manual.py`, please cancel the script every 10 epochs then rerun it to change the learning rate using the following commands
+While `train_auto.py` adjusts learning rate automatically, it usually yields worse performance (still better than competing algorithms). Using `train_manual.py` provides best results but you have to manually adjust learning rate. I have tried several ways to update learning rate during training, including `torch.optim.lr_scheduler`, but manually adjusting learning rate is always better.
+
+When using `train_manual.py`, please cancel the training process every 10 epochs then rerun it to change the learning rate using the following commands
 ```
 # After 10th epoch
-python train_manual.py --resume=./checkpoints/epoch_10.pth --set_lr=1e-6
+python train_manual.py --data_path=/path/to/Training_Samples --resume=./checkpoints/epoch_10.pth --set_lr=1e-6
 # After 20th epoch
-python train_manual.py --resume=./checkpoints/epoch_20.pth --set_lr=1e-7
+python train_manual.py --data_path=/path/to/Training_Samples --resume=./checkpoints/epoch_20.pth --set_lr=1e-7
 # After 30th epoch
-python train_manual.py --resume=./checkpoints/epoch_30.pth --set_lr=1e-8
+python train_manual.py --data_path=/path/to/Training_Samples --resume=./checkpoints/epoch_30.pth --set_lr=1e-8
+# Stop after 40th epoch and you are done
 ```
-I have tried several ways to update learning rate during training, including `torch.optim.lr_scheduler`, but manually adjusting learning rate is always better.
+After the training process complete, you should use the weight named `epoch_40.pth` for testing.
 
 ## Testing
-If you do not have time to retrain the network, you may download pretrained weights from [this link](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)  
 TODO
 
 # HDR Dataset and results
@@ -71,7 +81,7 @@ The folder contains two ZIP files:
 As you may be aware, our dataset and that of [NTIRE challenge](https://doi.org/10.1109/CVPRW53098.2021.00078) are all generated from the videos of [HDM-HDR dataset](https://doi.org/10.1117/12.2040003). However, the data formats of the generated LDR and HDR images are different. Our dataset has the same format as the [Kalantari and Ramamoorthi's dataset](https://doi.org/10.1145/3072959.3073609), that means it is fully compatible with existing HDR algorithms that are designed for Kalantari and Ramamoorthi's dataset. We also generate an additional test set from [HDRv](https://doi.org/10.1016/j.image.2013.08.018) with the same format.
 
 # Citation
-If our research and data are useful for your research, please kindly cite our work
+If our research or dataset are useful for your research, please kindly cite our work
 ```
 @article{Mai2022,
     author={Mai, Truong Thanh Nhat and Lam, Edmund Y. and Lee, Chul},
@@ -97,4 +107,4 @@ or if you prefer the low-rank matrix completion algorithm
     doi={10.1109/ICIP42928.2021.9506201}
 }
 ```
-Also, citing the respective authors of the original [HDM-HDR](https://doi.org/10.1117/12.2040003) and [HDRv](https://doi.org/10.1016/j.image.2013.08.018) video datasets is appreciated.
+Also, citing the original [HDM-HDR](https://doi.org/10.1117/12.2040003) and [HDRv](https://doi.org/10.1016/j.image.2013.08.018) video datasets is appreciated.

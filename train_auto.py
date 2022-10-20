@@ -11,6 +11,12 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-s',
+        '--data_path',
+        default='Training_Samples',
+        help='Path for training data.',
+    )
+    parser.add_argument(
+        '-s',
         '--save_path',
         default='checkpoints',
         help='Path for checkpointing.',
@@ -44,7 +50,7 @@ def train(opt):
 
     torch.backends.cudnn.benchmark = True
 
-    train_path = './Training_Samples'
+    train_path = opt.data_path
     data_train = DatasetDirectory(train_path)
     data_train_loader = torch.utils.data.DataLoader(data_train, batch_size=1, shuffle=True, num_workers=4)
 
