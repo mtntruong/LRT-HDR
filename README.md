@@ -46,7 +46,7 @@ conda activate lrt
 If you want to change the environment name, edit the first line of `env.yml` before creating the environment.
 
 ## Training
-Extract `Training_Samples.zip` to obtain the folder `Training_Samples`, then training process can be started by executing
+Extract `Training_Samples.zip` to obtain the folder `Training_Samples`, then run
 ```
 python train_auto.py --data_path=/path/to/Training_Samples
 # or
@@ -54,7 +54,7 @@ python train_manual.py --data_path=/path/to/Training_Samples
 ```
 While `train_auto.py` adjusts learning rate automatically, it usually yields worse performance (still better than competing algorithms). Using `train_manual.py` provides best results but you have to manually adjust learning rate. I have tried several ways to update learning rate during training, including `torch.optim.lr_scheduler`, but manually adjusting learning rate is always better.
 
-When using `train_manual.py`, please cancel the training process every 10 epochs then rerun it to change the learning rate using the following commands
+When using `train_manual.py`, please cancel the training process every 10 epochs then rerun to update the learning rate using the following commands
 ```
 # After 10th epoch
 python train_manual.py --data_path=/path/to/Training_Samples --resume=./checkpoints/epoch_10.pth --set_lr=1e-6
@@ -64,7 +64,7 @@ python train_manual.py --data_path=/path/to/Training_Samples --resume=./checkpoi
 python train_manual.py --data_path=/path/to/Training_Samples --resume=./checkpoints/epoch_30.pth --set_lr=1e-8
 # Stop after 40th epoch and you are done
 ```
-After the training process complete, you should use the weight named `epoch_40.pth` for testing.
+After the training process completes, you should use the weight named `epoch_40.pth` for testing.
 
 ## Testing
 TODO
