@@ -10,7 +10,7 @@ from model import RPCA_Net
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '-s',
+        '-d',
         '--data_path',
         default='Training_Samples',
         help='Path for training data.',
