@@ -13,6 +13,8 @@ https://doi.org/10.1109/ICIP42928.2021.9506201
 
 If you have any question, please open an issue.
 
+For detailed algorithms, please visit https://mtntruong.github.io/
+
 # Source code
 The proposed algorithm is implemented in Python with PyTorch framework.  
 The instructions for testing routine will be updated soon (they are bad codes, now I'm trying to make them cleaner and easier to use). In the meantime, you may take a look at the implementation of the main network, or download the datasets and results.
