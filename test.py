@@ -17,6 +17,21 @@ def parse_args():
         default='hdm',
         help='Choosing test data.',
     )
+    parser.add_argument(
+        '--data-path',
+        default='./HDM-HDR_Test_Samples',
+        help='Choosing test data.',
+    )
+    parser.add_argument(
+        '--checkpoint',
+        default='./LRT-HDR_net.pth',
+        help='Choosing test data.',
+    )
+    parser.add_argument(
+        '--output-path',
+        default='./HDM-HDR_results',
+        help='Choosing test data.',
+    )
     return parser.parse_args()
 
 
@@ -61,7 +76,20 @@ def HDR_inference(model, inp_data, inp_omega):
     return hdr_patch, end
 
 
-def create_images(img_folder, out_folder, ckpt_path, N_iter, img_width, img_height):
+def create_images(dataset, img_folder, out_folder, ckpt_path, N_iter):
+    # Dataset's properties
+    if dataset == 'hdm':
+        img_height = 980
+        img_width = 1820
+        num_images = 55
+    elif dataset == 'hdrv':
+        img_height = 720
+        img_width = 1280
+        num_images = 32
+    else:
+        print('Incorrect dataset.')
+        return 1
+    
     # Load model
     model = load_pretrained(ckpt_path, N_iter)
     
@@ -85,21 +113,14 @@ def create_images(img_folder, out_folder, ckpt_path, N_iter, img_width, img_heig
     h_grid = np.array(h_grid, dtype=np.uint16)
 
     # HDR reconstruction
-    gt_img_name = sorted(os.listdir(os.path.join(img_folder, 'HDR')))
-    for exr in gt_img_name:
-        print(exr)
-        seq = exr[0:6]
+    ev = [0.0, 3.0, 6.0] # exposure times
+    for exr in range(num_images):
+        
+        seq = str(exr+1).zfill(6)
+        print('Processing set ' + str(exr+1).zfill(6))
 
         # Storing final HDR image
         HDR = np.float32(np.zeros((img_height, img_width, 3)))
-        
-        # Read exposure times
-        try:
-            with open(os.path.join(img_folder, 'EXP', seq + '.txt'), 'r') as f:
-               ev = [float(line.strip()) for line in f if line]
-        except:
-            print('No EXP info. Using default...')
-            ev = [0.0, 3.0, 6.0]
 
         # Read image stack
         img_stack = np.zeros((img_height, img_width, 3, 3))
@@ -175,28 +196,17 @@ def create_images(img_folder, out_folder, ckpt_path, N_iter, img_width, img_heig
         np.putmask(HDR, (img2 > 0.01) & (img2 < 0.99), radiance)
         
         # Final writing
-        write_EXR(os.path.join(out_folder, exr), HDR)
+        write_EXR(os.path.join(out_folder, str(exr+1).zfill(6) + '.exr'), HDR)
 
 
 if __name__ == '__main__':
     opt_args = parse_args()
 
-    if opt_args.data == 'hdm':
-        if not os.path.exists('./HDM'):
-            os.mkdir('./HDM')
-        create_images('../Test_HDM',
-                      './HDM',
-                      './checkpoints/hdm.pth',
-                      N_iter=10, img_width=1820, img_height=980)
+    os.makedirs(opt_args.output_path, exist_ok=True)
+    create_images(opt_args.data,
+                  opt_args.data_path,
+                  opt_args.output_path,
+                  opt_args.checkpoint,
+                  N_iter=10)
 
-    elif opt_args.data == 'hdrv':
-        if not os.path.exists('./HDRv'):
-            os.mkdir('./HDRv')
-        create_images('../Test_HDRv',
-                      './HDRv',
-                      './checkpoints/hdm.pth',
-                      N_iter=10, img_width=1280, img_height=720)
-
-    else:
-        print('Incorrect dataset.')
     print('done')
