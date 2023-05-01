@@ -20,7 +20,7 @@ The proposed algorithm is implemented in Python using PyTorch 1.11.
 
 ## Preparation
 ### Download training/testing samples
-[Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/Eo87pbMBtLZHt03HZmJ0yIwB_VJ6X5ruXOKSNBgS-0tw-A)
+[Download samples from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/Eo87pbMBtLZHt03HZmJ0yIwB_VJ6X5ruXOKSNBgS-0tw-A)
 
 The folder contains four ZIP files:
 - Training_Samples.zip: 13000 training samples
@@ -30,7 +30,7 @@ The folder contains four ZIP files:
 
 ### Download pretrained weights
 If you do not have time to retrain the network, you may use pretrained weights  
-[Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)
+[Download pretrained weights from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EkFXsyWaoJVIttajp9CpxQ8Bg8j4iz7buSyObidTcZjtmw)
 
 The folder contains two PTH files:
 - LRT-HDR_net.pth: pretrained weight of LRT-HDR
@@ -80,7 +80,7 @@ The synthesized HDR images will be written in the folder specified by `--output-
 
 # HDR Dataset and results
 ## Download
-[Download from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EmgWtrTX6nNMmNmWaZHX0EQBEcPAg2wvZJluOsneVNdOfg)
+[Download dataset and results from Microsoft OneDrive](https://dguackr-my.sharepoint.com/:f:/g/personal/mtntruong_dgu_ac_kr/EmgWtrTX6nNMmNmWaZHX0EQBEcPAg2wvZJluOsneVNdOfg)
 
 The folder contains two ZIP files:
 - Datasets.zip: This file contains 187 and 32 multi-exposure image sets generated from the HDM-HDR and HDRv datasets, respectively, as described in the paper.
