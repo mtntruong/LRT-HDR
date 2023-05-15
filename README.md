@@ -11,9 +11,10 @@ Truong Thanh Nhat Mai, Edmund Y. Lam, and Chul Lee
 2021 IEEE International Conference on Image Processing (ICIP)  
 https://doi.org/10.1109/ICIP42928.2021.9506201
 
-If you have any question, please open an issue.
+For PDFs, please visit https://mtntruong.github.io/
 
-For detailed algorithms, please visit https://mtntruong.github.io/
+If you have any question, please open an issue.  
+The algorithm can also be applied to other applications. Please feel free to ask if you need help with training the algorithm using other datasets, either HDR imaging or other applications.
 
 # Source code
 The proposed algorithm is implemented in Python using PyTorch 1.11.  
