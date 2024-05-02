@@ -38,7 +38,7 @@ The folder contains two PTH files:
 - ICIP_net.pth: pretrained weight of the matrix completion network (ICIP paper)
 
 ### Required Python packages
-Please use `env.yml` to create an environment in [Anaconda](https://www.anaconda.com/products/distribution)
+Please use `env.yml` to create an environment in [Anaconda](https://www.anaconda.com)
 ```
 conda env create -f env.yml
 ```
