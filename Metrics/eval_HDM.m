@@ -5,7 +5,7 @@ ppd = 30;
 addpath('hdrvdp-2.2.2')
 addpath('pu_log_psnr')
 
-gt_dirs = '/media/madoka/crucial/HDR_DATA/HDM_RGBE/Test/HDR/';
+gt_dirs = './HDM/Test/HDR/';
 gtNames = dir(fullfile(gt_dirs,'*.hdr'));
 
 algo_list = dir('../Out_HDM/');
