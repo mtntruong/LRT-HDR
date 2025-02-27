@@ -13,8 +13,8 @@ https://doi.org/10.1109/ICIP42928.2021.9506201
 
 For PDFs, please visit https://mtntruong.github.io/
 
-If you have any question, please open an issue.  
-The algorithm can also be applied to other applications. Please feel free to ask if you need help with training the algorithm using other datasets, either HDR imaging or other applications.
+If you have any questions, please open an issue.  
+The algorithm can also be applied to other applications. Please feel free to ask if you need help training the algorithm on other datasets, either HDR imaging or other applications.
 
 # Source code
 The proposed algorithm is implemented in Python using PyTorch 1.11.  
@@ -38,7 +38,7 @@ The folder contains two PTH files:
 - ICIP_net.pth: pretrained weight of the matrix completion network (ICIP paper)
 
 ### Required Python packages
-Please use `env.yml` to create an environment in [Anaconda](https://www.anaconda.com)
+Please use `env.yml` to create an environment with [Anaconda](https://www.anaconda.com)
 ```
 conda env create -f env.yml
 ```
