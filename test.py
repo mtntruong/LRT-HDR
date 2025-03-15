@@ -13,24 +13,24 @@ from util import write_EXR, luma, inv_luma, matlab_style_gauss2D
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--data',
+        '--dataset',
         default='hdm',
-        help='Choosing test data.',
+        help='Choosing dataset "hdm" or "hdrv".',
     )
     parser.add_argument(
         '--data-path',
         default='./HDM-HDR_Test_Samples',
-        help='Choosing test data.',
+        help='Path to test data.',
     )
     parser.add_argument(
         '--checkpoint',
         default='./LRT-HDR_net.pth',
-        help='Choosing test data.',
+        help='Path to trained weight.',
     )
     parser.add_argument(
         '--output-path',
         default='./HDM-HDR_results',
-        help='Choosing test data.',
+        help='Path to store results.',
     )
     return parser.parse_args()
 
